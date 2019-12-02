@@ -5,7 +5,7 @@ GENV=$1
 
 cd ${GENV}
  if [[ ! -d .git ]]; then
-   git clone http://139.169.202.195:3000/tmoore/${GENV}.git .
+   git clone http://XXX.XXX.XXX.195:3000/tmoore/${GENV}.git .
    git lfs install
    cp ../.gitattributes .
    git add .gitattributes
