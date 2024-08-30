@@ -43,10 +43,6 @@ function txtcenter () {
   echo ""
 }
 ##################################################
-
-
-
-
    function pushd () { 
      command pushd "$@" > /dev/null 
    }
