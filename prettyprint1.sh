@@ -54,15 +54,15 @@ echo "" ; }
 ##################################################
 ##################################################
 function txtcenter () {
-# tcent 50 "this is a huge test 0123456789"
-# tcent "#" "this is a huge test 0123456789"
-count=1
-slen=$MLEN
-sstr=$2
-sfill=$1
-c_width=$(( ($slen - ( ${#sstr} + 2) ) / 2 ))
-while [ $count -le $c_width ]
-do
+  # txtcenter 50 "this is a huge test 0123456789"
+  # txtcenter "#" "this is a huge test 0123456789"
+ count=1
+ slen=$MLEN
+ sstr=$2
+ sfill=$1
+ c_width=$(( ($slen - ( ${#sstr} + 2) ) / 2 ))
+ while [ $count -le $c_width ]
+ do
   echo -n $sfill
   (( count++ ))
 done
