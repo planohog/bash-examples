@@ -50,6 +50,18 @@ function txtcenter () {
   echo ""
 }
 ##################################################
+function backupuser () {
+UNAME=$1
+ if [[ -d "/Users/${UNAME}" ]]; then
+    sudo rsync -av "/Users/${UNAME}" "/var/root/${UNAME}.DELETED"
+    if [[ -d "/var/root/${UNAME}.DELETED" ]]; then
+      printf ${PF1} "${UNAME} Backed up. /var/root/ " "[OK]"
+    fi
+ else
+    printf ${PF1} "${UNAME} Backed up. /var/root/ " "[FAIL]"
+ fi
+}
+##################################################
 function chkdel () {
   if [[ -z ${1} ]]; then echo "HELP [$0 -u UserName -d delete or [$0] "; exit ; fi
   urm=$( echo $1 |tr "[:upper:]" "[:lower:]"  )
@@ -71,6 +83,7 @@ function chkdel () {
 function deprovisonuser () 
 { 
   if [[ ${DELFLAG} -gt 0 ]]; then
+    backupuser ${USRNAME}
     echo "${C50}"
     printf ${PF1} "Running sysadminctl -deleteUser [${USRNAME}]"  "[OK]"  
     $(sysadminctl -deleteUser "${USRNAME}" )
