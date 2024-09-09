@@ -1,26 +1,7 @@
 #!/bin/bash
 export PATH=/usr/bin:/bin:/usr/sbin:/sbin
-
-
-export PATH=/usr/bin:/bin:/usr/sbin:/sbin
-USERNAME="mortaluser"
-#FULLNAME="Mortal User"
-if [[ -d "/Users/${USERNAME}" ]];
- then
- mv "/Users/${USERNAME}" "/Users/${USERNAME}.DELETED"
- rm -f "/Users/${USERNAME}"
-fi
-sysadminctl -deleteUser "${USERNAME}"
-#sysadminctl -addUser "${USERNAME}" -fullName "${FULLNAME}" -password "${PASSWORD}" -hint "${PASSWORDHINT}"
-
-
-
-
-#!/bin/bash
 ##################################################
 MLEN=50
-DUPUSER=0
-REWTUSER=0
 USRNAME=""
 DELFLAG=0
 RITNOW=$(date "+%b-%d-%Y %H:%M")
@@ -53,13 +34,17 @@ function txtcenter () {
 function backupuser () {
 UNAME=$1
  if [[ -d "/Users/${UNAME}" ]]; then
-    sudo rsync -av "/Users/${UNAME}" "/var/root/${UNAME}.DELETED"
+    echo "${C50}"
+    sudo rsync -av "/Users/${UNAME}" "/var/root/${UNAME}.DELETED" 
     if [[ -d "/var/root/${UNAME}.DELETED" ]]; then
-      printf ${PF1} "${UNAME} Backed up. /var/root/ " "[OK]"
+      printf ${PF1} "${UNAME} Backed up. /var/root/ " "[OK]" 
+      printf ${PF1} "${UNAME} Backed up. /var/root/ " "[OK]" >> "${LOGDIR}/provision.log"
     fi
  else
     printf ${PF1} "${UNAME} Backed up. /var/root/ " "[FAIL]"
+    printf ${PF1} "${UNAME} Backed up. /var/root/ " "[FAIL]" >>  "${LOGDIR}/provision.log"
  fi
+  echo "${C50}"
 }
 ##################################################
 function chkdel () {
