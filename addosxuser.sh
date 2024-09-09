@@ -8,12 +8,11 @@ NLAST=""
 NFULL=""
 RITNOW=$(date "+%b-%d-%Y %H:%M")
 LOGDIR="/var/root"
-PF1="%-45s%-10s\n" # printf format 2
-PF2="%-30s%-10s%-10s%-10s\n" # printf format 1
+PF1="%-45s%-10s\n" # printf format 1
 C50="##################################################"
 #################################################
 function txtcenter () {
-  # this will center text on screen example:  txtcenter 'terry was here'
+  # this will center text on screen example:  txtcenter "#" "I was here"
   count=1
   slen=${MLEN}
   sstr=$2
