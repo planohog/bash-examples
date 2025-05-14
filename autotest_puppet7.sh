@@ -1,6 +1,6 @@
 #!/bin/bash
 #################################################
-# Automated testing of cm02 puppet7 full system.
+# Automated testing of puppetserver puppet7 full system.
 # function ChkPuppetVer()
 # function ChkPuppet7Return()
 PUPVER="7."      # verify server version 7.*
